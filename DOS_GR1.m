@@ -28,24 +28,28 @@ num_kpoints_onedimension=12;    % number of k points along the x,y,z axis, total
 
 num_bands=10;       % the total number of frequency bands
 
-w_max_custom=-1;   % the range of frequency, '-1' denotes default settings
+% The range of frequency, '-1' denotes default settings
+w_max_custom=-1; 
 w_min_custom=-1;
 
 N_w_custom=20000;       % denotes the resolution of frequency : dw = (w_max - w_min) / N_w
 
-maxDOS_custom=-1;        % the parameters about plot, '-1' denotes default settings
-kinter_custom=30;            % the inter number of k points of band on line 
+% The parameters about plot, '-1' denotes default settings
+maxDOS_custom=-1;           % the max DOS displayed in the plot
+kinter_custom=30;           % the inter number of k points of band on line 
 fs_custom=10;           
 bandcolor_custom='b';
 bottomcolor_custom='k';
 thelinewidth_custom=1;
+Points_highsymmetry={'H','\Gamma','N','P','\Gamma (0)'};    % the Xlabel points of the band on line,
+%  the last point should be attached with ' (0)'.
 
 DOS_output='output.txt';
 fig_output='BandFigure.fig';
 eps_output='BandFigure.eps';
 
 %% Initialization and import data
-% the reciprocal vectors initialization
+% The reciprocal vectors initialization
 vectorb1=reciprocalvector1;
 vectorb2=reciprocalvector2;
 vectorb3=reciprocalvector3;
@@ -224,8 +228,9 @@ plot(DOS_nrm,w_var,'Color',bandcolor);
 fill(DOS_nrm,w_var,bandcolor);
 plot(DOS_nrm(1)*ones(size(w_var,2),1),w_var,'color',bottomcolor);
 set(gca,'FontSize',fs,'FontName','Helvetica','Layer','top');
-set(gca,'xTick', [Ks(kidx),Ks(end)*2],'XTickLabel',{'H','\Gamma','N','P','\Gamma (0)',...
-    num2str(maxDOS)},'XGrid','on','GridLineStyle','-','layer','bottom');
+Points_highsymmetry{end+1}=num2str(maxDOS);
+set(gca,'xTick', [Ks(kidx),Ks(end)*2],'XTickLabel',Points_highsymmetry,...
+    'XGrid','on','GridLineStyle','-','layer','bottom');
 xlim([Ks(1),2*Ks(end)]);
 ylim([w_min,w_max]);
 ylabel('Normalized frequency \omega (a/\lambda_0)');
