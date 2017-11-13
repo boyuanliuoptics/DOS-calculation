@@ -1,4 +1,5 @@
 function DOS_GGR
+
 %% DOS calculation using generalized GR method
 % The program is for DOS calculation using generalized GR method, referring
 % to article "Generalized Gilat-Raubenheimer Method for Density-of-States 
@@ -28,6 +29,7 @@ file_velocity='velocity_GGR.txt';
 file_DOSdata='output.txt';    % save file for Density of states data
 
 % notice the velocity should be compatible with bi basis length
+
 reciprocalvector1=[0 1 1];
 reciprocalvector2=[1 0 1];
 reciprocalvector3=[1 1 0];
@@ -38,6 +40,7 @@ num_kpoints=[12,12,12];
 N_band=10;      % the total number of frequency bands
 
 w_max_custom=-1;   % the range of frequency, '-1' denotes default settings
+
 w_min_custom=-1;
 
 N_w_custom=20000;       % denotes the resolution of frequency : dw = (w_max - w_min) / N_w
@@ -51,6 +54,7 @@ thelinewidth_custom=1;
 
 %% Initialization and import data
 % the reciprocal vectors initialization
+
 vectorb1=reciprocalvector1;
 vectorb2=reciprocalvector2;
 vectorb3=reciprocalvector3;
@@ -61,6 +65,7 @@ vectorsb=[vectorb1;vectorb2;vectorb3];
 n_kpoints=prod(num_kpoints);
 
 N_kpoints=N_band*n_kpoints;
+
 
 % import data
 % the two importing txt files are arranged as matrix of N*1 and N*3
@@ -88,6 +93,7 @@ itmd_v=sort(abs(datav),2,'descend');   % intermediate velocity: v1 >= v2 >= v3
 N_w=N_w_custom;
 step_w=(w_max-w_min)/N_w;      % the resolution of frequency
 hside=1/num_kpoints(1)/2;    % half of side length of one transfromed cube
+
 DOS=zeros(N_w+1,1);       % initialze the density of states array
 
 w1=hside*abs(itmd_v(:,1)-itmd_v(:,2)-itmd_v(:,3));
@@ -106,11 +112,13 @@ for num_k=1:N_kpoints
     v2=itmd_v(num_k,2);
     v3=itmd_v(num_k,3);
     
+
     flag_delta_n_w=0;       % first time compute delta_n_w = 1
     for vdirection=0:1      % two velocity directions denote w-w_k0 > 0 and <0
         for delta_n_w=1:N_w
             n_tmpt=n_w_kcenter+(-1)^vdirection*(delta_n_w-1);
             delta_w=abs(dataw(num_k)-(n_tmpt*step_w+w_min));
+
             if delta_w<=w1(num_k)
                 if v1>=v2+v3
                     DOScontribution=4*hside^2/v1;
@@ -168,6 +176,7 @@ if nbands~=N_band       % numbers of band in two file are unequal!
 end
 
 kindex = 1:size(data_band(:,1),1);
+
 Ks = 0;   % record all
 kidx=[];    % record the nodes of band plot
 
@@ -187,6 +196,7 @@ for i=1:imax
     coor_k2=data_band(k2,1:3)*bs;
     r1=norm(coor_k1);
     r2=norm(coor_k2);
+
     if r1*r2==0
         rr=abs(r1-r2);
     else
@@ -207,6 +217,7 @@ thelinewidth=thelinewidth_custom;
 figure
 for i = 1:nbands 
     plot(Ks,data_band(:,3+i),'-','color',bandcolor,'LineWidth',thelinewidth);
+
     hold on;
 end
 
@@ -219,12 +230,14 @@ end
 DOS(DOS>maxDOS)=maxDOS;
 w_var=w_min+step_w*((1:(N_w+1))-1);   % frequency -- the variable of DOS
 DOS_nrm=(Ks(end)-Ks(1))*DOS/maxDOS+Ks(end);
+
 plot(DOS_nrm,w_var,'Color',bandcolor);
 fill(DOS_nrm,w_var,bandcolor);
 plot(DOS_nrm(1)*ones(size(w_var,2),1),w_var,'color',bottomcolor);
 set(gca,'FontSize',fs,'FontName','Helvetica','Layer','top');
 set(gca,'xTick', [Ks(kidx),Ks(end)*2],'XTickLabel',{'H','\Gamma','N','P','\Gamma (0)',...
     num2str(maxDOS)},'XGrid','on','GridLineStyle','-','layer','bottom');
+
 xlim([Ks(1),2*Ks(end)]);
 ylim([w_min,w_max]);
 ylabel('Normalized frequency \omega (a/\lambda_0)');
