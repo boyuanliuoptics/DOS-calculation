@@ -21,21 +21,23 @@ You need to change some presets to use some convenient usage like multithread (m
 
 (a) Multithread computation. Use 'which mpb-split' to find the path and edit the file 'mpb-split'. A part of the code is as below:
 
-----------------------------------------------
+-----------------coding part starts------------------
 i=1
 while test `expr $i \< $1` = 1; do
     /usr/local/bin/mpb interactive?=false k-split-index=$i k-split-num=$* > $tmpname.$i &
     subprocesses="$subprocesses $!"
     i=`expr $i + 1`
 done
-----------------------------------------------
+------------------coding part ends-------------------
 
 and change 'i=1' to 'i=0' in the first line.
 
 (b) Running on a sever. Add an extra expression before running mpb: 'OMP_NUM_THREADS=1'. For example, in 'dompb.sh' line 41,
-----------------------------------------------
+
+-----------------coding part starts------------------
 OMP_NUM_THREADS=1 mpb-split 8 Zone?=false $file_band_ctl > $data_bandline
-----------------------------------------------
+------------------coding part ends-------------------
+
 and with this, one thread will be processed in one cpu core.
 
 3. ----------------Details in the programs of GGR method and tetrahedron (Tr) method-------
