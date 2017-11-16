@@ -3,7 +3,7 @@ Density-of-states calculation in photonic crystals
 
 Authorship
 ----------------------------------------
-Written by Boyuan Liu (zkdlby@mail.ustc.edu.cn) in [L01](http://l01.iphy.ac.cn/L01web-English/html/index-english.html) group in Institute of Physics CAS leadered by Prof. [Ling Lu](http://l01.iphy.ac.cn/linglu/). 
+Written by Boyuan Liu (zkdlby@mail.ustc.edu.cn) in [L01 group](http://l01.iphy.ac.cn/L01web-English/html/index-english.html) in Institute of Physics CAS leadered by [Prof. Ling Lu](http://l01.iphy.ac.cn/linglu/). 
 
 Brief Introduction
 ----------------------------------------
