@@ -8,7 +8,7 @@ Written by Boyuan Liu (zkdlby@mail.ustc.edu.cn) in [L01 group](http://l01.iphy.a
 Brief Introduction
 ----------------------------------------
 
-We present a set of open-source programs to calculate density of states (DOS) using Generalized-Gilat-Raubenheimer (GGR) method and tetrahedron (Tr) method in photonic crystals. You can choose the program using GGR method to calculate the DOS based on the frequency band data and group velocity data. You can also choose the one using tetrahedron method which has a relative less accuracy compared with GGR while it only needs band data without demand for group velocity data. 
+We present two open-source programs to calculate density of states (DOS) in photonic crystals using Generalized-Gilat-Raubenheimer (GGR) method and tetrahedron (Tr) method respectively. GGR method program needs both the frequency band data and group velocity data to calculate DOS and tetrahedron method program only needs band data while has a relative less accuracy compared with GGR. 
 
 We suggest to use MIT Phtonic-Bands (MPB) to calculate the frequency band and group velocity. Input these data files into the DOS calculation program 'DOS_GR.m' or 'DOS_Tr.m' to obtain the DOS of the structure. You can also directly input the data files from other band-compuating softwares to the DOS program, on the condition that the data is arranged in the right format in the files.
 
