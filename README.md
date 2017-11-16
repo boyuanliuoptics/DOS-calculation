@@ -3,7 +3,7 @@ Generalized-Gilat-Raubenheimer-method
 
 Authorship
 ----------------------------------------
-Written by Boyuan Liu in Matlab, scheme and Linux shell (zkdlby@mail.ustc.edu.cn). 
+Written by Boyuan Liu (zkdlby@mail.ustc.edu.cn) in [L01](http://l01.iphy.ac.cn/L01web-English/html/index-english.html) group in Institute of Physics CAS leadered by Prof. [Ling Lu](http://l01.iphy.ac.cn/linglu/). 
 
 Brief Introduction
 ----------------------------------------
@@ -18,4 +18,9 @@ We propose the GGR method in our article 'Generalized Gilat-Raubenheimer method 
 
 Usage
 ----------------------------------------
+Firstly, run script file *dompb.sh* in Linux system,
+    ./dompb.sh
+and it will run MPB with the structure-data file *trirods.ctl* in the same folder and process the band data and group velocity data into correct format.
+Then use Matlab to run the file *DOS_GGR.m* or *DOS_Tr.m* with the output files of *dompb.sh* in the same folder. Either of two files will output the density of states data with two kinds of algorithms respectively and the corresponding plot as below.
 
+To be continue
