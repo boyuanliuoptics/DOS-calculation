@@ -25,7 +25,7 @@ Firstly, run script file *dompb.sh* in Linux system,
     
 and it will run MPB with the structure-data file *trirods.ctl* in the same folder and process the band data and group velocity data into correct format.
 
-With the output files of *dompb.sh* in the same folder, use Matlab to run the file *DOS_GGR.m* or *DOS_Tr.m* . Either of two files will output the DOS data with two kinds of algorithms respectively and the corresponding plot as below.
+Then use Matlab to run the file *DOS_GGR.m* or *DOS_Tr.m* . Either of two files will output the DOS data with two kinds of algorithms respectively and the corresponding plot as below.
 
 
 
