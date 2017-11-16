@@ -1,4 +1,4 @@
-Generalized-Gilat-Raubenheimer-method
+Density-of-states calculation in photonic crystals
 =====================================================
 
 Authorship
@@ -8,9 +8,9 @@ Written by Boyuan Liu (zkdlby@mail.ustc.edu.cn) in [L01](http://l01.iphy.ac.cn/L
 Brief Introduction
 ----------------------------------------
 
-We present an open-source program to calculate density of states (DOS) using Generalized-Gilat-Raubenheimer (GGR) method for band theory, especially in photonic crystals. You can use the code to calculate the DOS from the frequency band data and group velocity data. We also provide another DOS calculation program using tetrahedron method which has a relative less accuracy compared with GGR while it only needs band data without demand for group velocity data. 
+We present a set of open-source programs to calculate density of states (DOS) using Generalized-Gilat-Raubenheimer (GGR) method and tetrahedron (Tr) method in photonic crystals. You can choose the program using GGR method to calculate the DOS based on the frequency band data and group velocity data. You can also choose the one using tetrahedron method which has a relative less accuracy compared with GGR while it only needs band data without demand for group velocity data. 
 
-We suggest to use MIT Phtonic-Bands (MPB) to calculate the frequency band and group velocity. Input these data into the DOS calculation program 'DOS_GR.m' or 'DOS_Tr.m' to obtain DOS of the structure. You can also directly input the data files from other band compuation softwares to the DOS program, as long as the data is arranged in the right format in the files.
+We suggest to use MIT Phtonic-Bands (MPB) to calculate the frequency band and group velocity. Input these data files into the DOS calculation program 'DOS_GR.m' or 'DOS_Tr.m' to obtain the DOS of the structure. You can also directly input the data files from other band-compuating softwares to the DOS program, on the condition that the data is arranged in the right format in the files.
 
 Citation
 ----------------------------------------
@@ -28,6 +28,5 @@ and it will run MPB with the structure-data file *trirods.ctl* in the same folde
 With the output files of *dompb.sh* in the same folder, use Matlab to run the file *DOS_GGR.m* or *DOS_Tr.m* . Either of two files will output the DOS data with two kinds of algorithms respectively and the corresponding plot as below.
 
 
-You can also input the data from other band-calculating solfwares to our DOS programs to obtain DOS data, on condition that the data is in the same format as output data of *dompb.sh*.
 
 To be continue
