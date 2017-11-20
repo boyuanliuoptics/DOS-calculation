@@ -27,7 +27,7 @@ and it will run MPB with the structure-data file *3Dexample.ctl* in the same fol
 
 Then use Matlab to run the file *DOS_GGR.m*. It will output the DOS data and the corresponding plot as below.
 
-![3Dexample](https://github.com/boyuanliuoptics/DOS-calculation/raw/master/3Dexample.pdf)
+![3Dexample](https://github.com/boyuanliuoptics/DOS-calculation/raw/master/untitled.jpg)
 
 You can also change the settings in the the ctl file to use *DOS_Tr.m* to calculate the DOS and we provide a ctl exmple of two dimension as well.
 
