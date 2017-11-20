@@ -4,44 +4,17 @@
 ; structure setting
 ;-------------------
 
-; example of a double gyroid photonic crystal
+; A triangular lattice of dielectric rods in air.
 
 ;set the primitive lattice
-(set! geometry-lattice (make lattice
-(basis-size (/ (sqrt 3) 2) (/ (sqrt 3) 2) (/ (sqrt 3) 2))
-(basis1 -1 1 1)
-(basis2 1 -1 1)
-(basis3 1 1 -1)))
+(set! geometry-lattice (make lattice (size 1 1 no-size)
+                         (basis1 (/ (sqrt 3) 2) 0.5)
+                         (basis2 (/ (sqrt 3) 2) -0.5)))
 
-;define a couple of parameters about the structure (which we can set from the command-line)
-(define-param eps 16)
-(define-param epsbg 1); the dielectric of air
-(define-param isoval -1.1);isovalue to choose packing fraction
-(define pi (* 4 (atan 1)))
-(define FB
-(lambda (h k l x y z)
-(* (cos (* 2 pi (+ h k l) 0.25)) (+ 
-	(* (sin (* 2 pi (+ (* h x) (/ l 4)))) (sin (* 2 pi (+ (* k y) (/ h 4)))) (sin (* 2 pi (+ (* l z) (/ k 4)))))
-	(* (sin (* 2 pi (+ (* h y) (/ l 4)))) (sin (* 2 pi (+ (* k z) (/ h 4)))) (sin (* 2 pi (+ (* l x) (/ k 4)))))
-	(* (sin (* 2 pi (+ (* h z) (/ l 4)))) (sin (* 2 pi (+ (* k x) (/ h 4)))) (sin (* 2 pi (+ (* l y) (/ k 4)))))
-))))
-(define-param b 1)
-(define-param c 1)
-(define (eps-func p-lattice)
-(let* ((p (lattice->cartesian p-lattice))
-(x (vector3-x p))
-(y (vector3-y p))
-(z (vector3-z p)))
-(if 
-(< (FB 1 1 0 x (/ y b) (/ z c)) isoval)
-	(make dielectric-anisotropic (epsilon-diag eps eps eps) (epsilon-offdiag 0 0 0))
-	(if (< (FB 1 1 0 (- x) (- (/ y b)) (- (/ z c))) isoval)
-		(make dielectric-anisotropic (epsilon-diag eps eps eps) (epsilon-offdiag 0 0 0))
-		(make dielectric (epsilon epsbg)))
-)
-))
-
-(set! default-material (make material-function (material-func eps-func)))
+;define a couple of parameters about the structure
+(set! geometry (list (make cylinder
+                       (center 0 0 0) (radius 0.2) (height infinity)
+                       (material (make dielectric (epsilon 12))))))
 
 ;-----------------------------------------------------
 ; computing setting -- for drawing band stucture line
@@ -53,12 +26,11 @@
 
 ;high symmetry points in the band
 (define G (vector3 0 0 0))
-(define H (vector3 0.5 -0.5 0.5))
-(define P (vector3 0.75 -0.25 -0.25))
-(define N (vector3 0.5 0. -0.5))
+(define M (vector3 0 0.5 0))
+(define K (vector3 (/ -3) (/ 3) 0))
 
 ;sequence of band structure in line
-(define bandseq (list H G N P G))
+(define bandseq (list G M K G))
 
 ;k-int is the inter number of k points in line between two high symmetry points
 (define-param k-int 30)
@@ -79,19 +51,19 @@
 (define-param GGR-Tr? false)
 
 ;num-k is the inter number of k points along one dimension when sampling the BZ
-(define-param num-k 10); num-k should be even number to make the mesh avoid Gamma point when using GGR method or T-symmetry reducement
+(define-param num-k 30); num-k should be even number to make the mesh avoid Gamma point when using GGR method or T-symmetry reducement
 
 ;---------------------------------------------------
 ; computing setting -- accuracy and number of bands
 ;---------------------------------------------------
 
-(set-param! resolution 16)
+(set-param! resolution 32)
 (set-param! mesh-size 2)
 (set-param! num-bands 8)
 
 ;-----------------------------------User changing part ends-----------------------------------------
 
-;the BZ ranges in [-kx,+kx]^3
+;the BZ ranges in [-kx,+kx]^2
 (define kx (/ 1 2))
 
 ;k-shift-GGR is half of the distance between two k ajacent points in one dimension 
@@ -118,7 +90,7 @@
                 (map
                 (lambda (x) (vector3 x y z))
 		(if T-symmetry?
-			(interpolate (- (/ num-k 2) 1) (list (- k-shift 0) (- kx k-shift))); half of the BZ
+			(interpolate (- (/ num-k 2) 1) (list (- k-shift 0) (- kx k-shift))); half of the BZ 
 			(interpolate num-k (list (- k-shift kx) (- kx k-shift))); the whole BZ 
 		)
                 )
@@ -126,7 +98,7 @@
         (interpolate num-k (list (- k-shift kx) (- kx k-shift)))
         )
 )
-	(interpolate num-k (list (- k-shift kx) (- kx k-shift)));
+	(list 0)
 )
 ))
 
@@ -134,11 +106,11 @@
 (define-param Zone? true)
 (if Zone?
         (set! k-points (map (lambda (x) x) kpts))
-	(set! k-points (interpolate k-int bandseq))
+        (set! k-points (interpolate k-int bandseq))
 )
 
 ;run the program
 (if GGR-Tr?
-	(run); Tr method doesn't need group velocity
-	(run display-group-velocities); GGR method needs group velocity
+	(run-te); Tr method doesn't need group velocity
+	(run-te display-group-velocities); GGR method needs group velocity
 )
