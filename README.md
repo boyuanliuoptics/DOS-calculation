@@ -29,7 +29,7 @@ Then use Matlab to run the file *DOS_GGR.m*. It will output the DOS data and the
 
 ![3Dexample](https://github.com/boyuanliuoptics/DOS-calculation/raw/master/3Dexample.jpg)
 
-You can also change the settings in the the ctl file to use *DOS_Tr.m* to calculate the DOS and we provide a ctl exmple of two dimension as well.
+You can change the settings in the the ctl file to use *DOS_Tr.m* to calculate the DOS and we provide a ctl exmple of two dimension as well. It is ok to use band data from other band-computing softwares, as long as the band data is in the right form.
 
 Notice and Future Plans
 ----------------------------------------
