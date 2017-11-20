@@ -23,10 +23,12 @@ Firstly, run script file *dompb.sh* in Linux system,
 
     ./dompb.sh
     
-and it will run MPB with the structure-data file *trirods.ctl* in the same folder and process the band data and group velocity data into correct format.
+and it will run MPB with the structure-data file *3Dexample.ctl* in the same folder and process the band data and group velocity data into correct format.
 
-Then use Matlab to run the file *DOS_GGR.m* or *DOS_Tr.m* . Either of two files will output the DOS data and the corresponding plot as below.
+Then use Matlab to run the file *DOS_GGR.m*. It will output the DOS data and the corresponding plot as below.
 
+You can also change the settings in the the ctl file to use *DOS_Tr.m* to calculate the DOS and we provide a ctl exmple of two dimension as well.
 
-
-To be continue
+Notice and Future Plans
+----------------------------------------
+The DOS in 2D structures is not as smooth as that in 3D due to the inherent characteristic of the two methods. We will find some other methods more compatible to 2D situations, like adaptive Gaussian broadening method and so on.
