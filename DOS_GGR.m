@@ -54,8 +54,8 @@ fs_custom=10;
 bandcolor_custom='b';
 bottomcolor_custom='k';
 thelinewidth_custom=1;
-sequence_points={'\Gamma','M','K','\Gamma'};    % sequence of high symmetry points in 2D example
-% sequence_points={'H','\Gamma','N','P','\Gamma'};    % sequence of high symmetry points in 3D example
+% sequence_points={'\Gamma','M','K','\Gamma'};    % sequence of high symmetry points in 2D example
+sequence_points={'H','\Gamma','N','P','\Gamma'};    % sequence of high symmetry points in 3D example
 %% Initialization and import data
 % the reciprocal vectors initialization
 vectorb1=reciprocalvector1;
