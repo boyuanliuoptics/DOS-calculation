@@ -5,8 +5,8 @@
 #---------------------------------------
 
 # file names setting
-file_band_ctl="DG.ctl"	# 3D example
-# file_band_ctl="trirods.ctl"	# 2D example
+file_band_ctl="3Dexample.ctl"	# 3D example
+# file_band_ctl="2Dexample.ctl"	# 2D example
 data_bandmap="bandmap.data"
 data_bandline="bandline.data"
 file_output_line="band.txt"
