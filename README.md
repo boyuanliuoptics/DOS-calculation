@@ -33,4 +33,4 @@ You can change the settings in the the ctl file to use *DOS_Tr.m* to calculate t
 
 Notice and Future Plans
 ----------------------------------------
-The DOS in 2D structures is not as smooth as that in 3D due to the inherent characteristic of the two methods. We will find some other methods more compatible to 2D situations, like adaptive Gaussian broadening method and so on.
+The DOS in 2D structures is not as smooth as that in 3D due to the inherent characteristic of the two methods. We will find some other methods more compatible to 2D situations, like adaptive Gaussian broadening method, to give a better solution for 2D sructures in the future.
