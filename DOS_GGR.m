@@ -49,7 +49,7 @@ w_min_custom=-1;
 N_w_custom=20000;       % denotes the resolution of frequency : dw = (w_max - w_min) / N_w
 
 kinter = 30;       % the inter quantity of k points between two high symmetry points
-maxDOS_custom=51;        % the parameters about plot, '-1' denotes default settings
+maxDOS_custom=-1;        % the parameters about plot, '-1' denotes default settings
 fs_custom=10;
 bandcolor_custom='b';
 bottomcolor_custom='k';
