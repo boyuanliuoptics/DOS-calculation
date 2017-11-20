@@ -16,7 +16,7 @@
                        (center 0 0 0) (radius 0.48) (height infinity)
                        (material (make dielectric (epsilon 1))))))
 
-(set! default-material (make dielectric (epsilon 12)))
+(set! default-material (make dielectric (epsilon 13)))
 ;-----------------------------------------------------
 ; computing setting -- for drawing band stucture line
 ;-----------------------------------------------------
