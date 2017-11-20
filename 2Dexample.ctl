@@ -4,7 +4,7 @@
 ; structure setting
 ;-------------------
 
-; A triangular lattice of dielectric rods in air.
+; A triangular lattice of air rods in dielectric 13.
 
 ;set the primitive lattice
 (set! geometry-lattice (make lattice (size 1 1 no-size)
@@ -13,9 +13,10 @@
 
 ;define a couple of parameters about the structure
 (set! geometry (list (make cylinder
-                       (center 0 0 0) (radius 0.2) (height infinity)
-                       (material (make dielectric (epsilon 12))))))
+                       (center 0 0 0) (radius 0.48) (height infinity)
+                       (material (make dielectric (epsilon 1))))))
 
+(set! default-material (make dielectric (epsilon 12)))
 ;-----------------------------------------------------
 ; computing setting -- for drawing band stucture line
 ;-----------------------------------------------------
@@ -57,7 +58,7 @@
 ; computing setting -- accuracy and number of bands
 ;---------------------------------------------------
 
-(set-param! resolution 32)
+(set-param! resolution 16)
 (set-param! mesh-size 2)
 (set-param! num-bands 8)
 
@@ -111,6 +112,6 @@
 
 ;run the program
 (if GGR-Tr?
-	(run-te); Tr method doesn't need group velocity
-	(run-te display-group-velocities); GGR method needs group velocity
+	(run-tm); Tr method doesn't need group velocity
+	(run-tm display-group-velocities); GGR method needs group velocity
 )
