@@ -1,22 +1,19 @@
 function DOS_Tr
 %% DOS calculation using tetrahedron method
-% The program is for DOS calculation using tetrahedron method, referring
-% to articles " G Lehmann and M Taut. On the numerical calculation
-% of the density of states and related properties. physica
+% The program is for DOS calculation using tetrahedron method. It is a part of 
+% results of our article "Generalized Gilat-Raubenheimer Method for Density-of-States 
+% Calculation in Photonic Crystals". You can also refer to articles 
+% "G Lehmann and M Taut. On the numerical calculation of the density of states and related properties. physica
 % status solidi (b), 54(2):469{477, 1972" and "Peter E Bl¡§ochl, Ove Jepsen,
 % and Ole Krogh Andersen. Improved tetrahedron method for brillouin-zone 
-% integrations. Physical Review B, 49(23):16223, 1994".
+% integrations. Physical Review B, 49(23):16223, 1994" for details of
+% tetrahedron method.
 
-% The first edition is finished in Nov. 9, 2017.
-
+% The first edition is finished in Nov. 20th, 2017.
 %% Important notice for initial parameters!!!
 % Necessary parameters: 
 % 0. two files including band freqeuncies between the high symmetry points 
-% band frequencies with k-points coordinates in the whole Brillouin zone
-% (Notice: The band data could also be the half of 
-% the Brillouin zone in latter two files if there is time-reversal symmetry, which will save half of
-% the computing time for bands. The values of DOS only need to be multiplied 
-% by 2 if you choose to use half of the Brillouin zone.);
+% band frequencies with k-points coordinates in the whole Brillouin zone;
 % 1. the range of kx, ky, kz; 2. the number of k points; 3. number of
 % bands; 4. the reciprocal vectors.
 % Optional parameters: 4. maximum and minimum of band frequency (w_max, w_min); 
@@ -26,24 +23,31 @@ draw_band=1;    % draw the band structure with DOS
 % draw_band=0;    % only calculate DOS and output the DOS data
 
 file_bandline='band.txt';
-file_bandmap='frequency_tetrahedron.txt';
+file_bandmap='frequency_Tr.txt';
 
 file_DOSdata='output.txt';  % save file for Density of states data
 
-% reciprocal vectors are only used to optimize the interpolation
+% reciprocalvector only influence the division of a parallelepiped
+% 2D examle: trirods.ctl
+% reciprocalvector1=[sqrt(3)/2 1/2 0];
+% reciprocalvector2=[sqrt(3)/2 -1/2 0];
+% reciprocalvector3=[0 0 0];
+% 3D examle: DG.ctl
 reciprocalvector1=[0 1 1];
 reciprocalvector2=[1 0 1];
 reciprocalvector3=[1 1 0];
 
-% volumn of BZ is a parrallelepiped with range ki in [-b_len(i)/2, b_len(i)/2], b_len(i) is the
-% reciprocal lattice length in i-th dimension (i=1,2,3).
-% if you use half of the BZ as k3 range in [0, b_len(3)], then b_len(3)=1/2
-b_len=[1, 1, 1];
-frac_BZ=1;  % if you use half of BZ, then set it to 1/2
-% num_kpoints(i) is the number of k points along the bi axis, 
-num_kpoints=[12,12,12]; 
+% b_len(i) is length of the range of k in i-th dimension (i=1,2,3),
+% whose unit fits the coordinates in file_bandmap.
+% volumn of BZ is a parrallelepiped with range ki in [-b_len(i)/2, b_len(i)/2].
+% if you use half of the BZ (T symmetry) as k1 range in [0, b_len(1)], then b_len(1)=1/2.
+b_len=[1/2, 1, 1];
 
-N_band=10;       % the total number of frequency bands
+% num_kpoints(i) is the number of k points along the bi axis, 
+% if it is 2D structure, num_kpoints(3) should be 1.
+num_kpoints=[6,12,12]; 
+
+N_band=8;       % the total number of frequency bands
 
 w_max_custom=-1;   % the range of frequency, '-1' denotes default settings
 w_min_custom=-1;
@@ -56,15 +60,13 @@ fs_custom=10;
 bandcolor_custom='b';
 bottomcolor_custom='k';
 thelinewidth_custom=1;
-
+% sequence_points={'\Gamma','M','K','\Gamma'};    % sequence of high symmetry points in 2D example
+sequence_points={'H','\Gamma','N','P','\Gamma'};    % sequence of high symmetry points in 3D example
 %% Initialization and import data
+
 % k_step(i) is the interval length along i-th dimension
 k_step=b_len./(num_kpoints-1);
 
-% n_kpoints is the total number of k points
-% N_kpoints is the product of number of bands and total number of k points in Brillouin zone
-n_kpoints=prod(num_kpoints);
-v_tetra=1/6/n_kpoints;
 % import data
 % the two importing txt files are arranged as matrix of N*1 and N*3
 dataall=importdata(file_bandmap);
@@ -73,6 +75,17 @@ k_min=min(datak(:,1:3));
 dataw=dataall(:,4:end); % the other columns are the bands number
 datakn=round((datak-k_min)./k_step)+1;  % integer index of k points, starting from 1
 
+if num_kpoints(3)==1        % the structure is 2 dimensional
+    num_kpoints(3)=2;
+    datakn(:,3)=1;
+    datakn=[datakn;(datakn+[0,0,1])];       % increase a second layer to perform tetrahedron method
+    dataw=[dataw;dataw];        % frequency of the second layer is the same as original one (z=0)
+end
+
+% n_kpoints is the total number of k points
+% N_kpoints is the product of number of bands and total number of k points in Brillouin zone
+n_kpoints=prod(num_kpoints);
+v_tetra=1/6/prod(num_kpoints-1);
 
 if w_max_custom==-1
     w_max=1.05*max(dataw(:)); % the maximum of frequency should be larger than max(dataw) a little
@@ -89,7 +102,7 @@ end
 % other parmeters
 
 step_w=(w_max-w_min)/N_w;      % the resolution of frequency
-DOSarrary=zeros(N_w+1,1);       % initialze the density of states array
+DOSarray=zeros(N_w+1,1);       % initialze the density of states array
 
 % initializing w_grid to store the frequency of all the k points
 w_grid(num_kpoints(1),num_kpoints(2),num_kpoints(3),N_band)=0;
@@ -122,7 +135,7 @@ end
 
 %% Check the input information
 
-if size(datak,1)~=n_kpoints
+if size(datakn,1)~=n_kpoints
     error('Error! The number of k points is wrong.\n');
 elseif size(dataw,2)~=n_band
     error('Error! The number of bands is wrong.\n');
@@ -168,7 +181,7 @@ for nk1=1:num_kpoints(1)-1
                         w_tmpt=step_w*nw+w_min;
                         if w41 == 0
                             dos_tmpt=v_tetra/step_w;
-                            DOSarrary(nw+1)=DOSarrary(nw+1)+dos_tmpt;
+                            DOSarray(nw+1)=DOSarray(nw+1)+dos_tmpt;
                             break;
                         elseif w_tmpt < w_corner(1)
                             continue;
@@ -179,7 +192,7 @@ for nk1=1:num_kpoints(1)-1
                                 if w31 > 0
                                     dos_tmpt=0;
                                 else
-                                    dos_tmpt=3*v_tetra/w41;
+                                    dos_tmpt=3*2*v_tetra/w41;
                                 end
                             end
                         elseif w_tmpt <= w_corner(3)
@@ -193,7 +206,7 @@ for nk1=1:num_kpoints(1)-1
                     if dos_tmpt > v_tetra/step_w      
                         dos_tmpt=v_tetra/step_w;    % the maximum of DOS contribution for one tetrahedron               
                     end
-                    DOSarrary(nw+1)=DOSarrary(nw+1)+dos_tmpt;
+                    DOSarray(nw+1)=DOSarray(nw+1)+dos_tmpt;
                     end
                 end
             end
@@ -203,10 +216,11 @@ end
 
 % output DOS data into output.txt
 file_output=fopen(file_DOSdata,'wt');
-for nprint_w=1:N_w+1
-    fprintf(file_output,'%.10f %.10f\n',w_min+step_w*(nprint_w-1),DOSarrary(nprint_w)/frac_BZ);
-end
 
+for nprint_w=1:N_w+1
+    fprintf(file_output,'%.10f %.10f\n',w_min+step_w*(nprint_w-1),DOSarray(nprint_w));
+end
+fclose(file_output);
 %% Band plot and DOS
 % import band data
 if draw_band==0
@@ -268,24 +282,25 @@ for i = 1:nbands
 end
 
 if maxDOS_custom==-1
-    maxDOS=ceil(max(DOSarrary));
+    maxDOS=ceil(max(DOSarray));
 else
     maxDOS=maxDOS_custom;
 end
 
-DOSarrary(DOSarrary>maxDOS)=maxDOS;
+DOSarray(DOSarray>maxDOS)=maxDOS;
 w_var=w_min+step_w*((1:(N_w+1))-1);   % frequency -- the variable of DOS
-DOS_nrm=(Ks(end)-Ks(1))*DOSarrary/maxDOS+Ks(end);
+DOS_nrm=(Ks(end)-Ks(1))*DOSarray/maxDOS+Ks(end);
 plot(DOS_nrm,w_var,'Color',bandcolor);
 fill(DOS_nrm,w_var,bandcolor);
 plot(DOS_nrm(1)*ones(size(w_var,2),1),w_var,'color',bottomcolor);
 set(gca,'FontSize',fs,'FontName','Helvetica','Layer','top');
-set(gca,'xTick', [Ks(kidx),Ks(end)*2],'XTickLabel',{'H','\Gamma','N','P','\Gamma (0)',...
-    num2str(maxDOS)},'XGrid','on','GridLineStyle','-','layer','bottom');
+sequence_points{end}=strcat(sequence_points{end},' (0)');
+set(gca,'xTick', [Ks(kidx),Ks(end)*2],'XTickLabel',[sequence_points, num2str(maxDOS)],...
+    'XGrid','on','GridLineStyle','-','layer','bottom');
 xlim([Ks(1),2*Ks(end)]);
 ylim([w_min,w_max]);
-ylabel('Normalized frequency \omega (a/\lambda_0)');
-title('Band structure and its corresponding DOS');
+ylabel('Frequency (a/2\pi c)');
+title('Band structure and DOS (2\pi c/a)');
 hold off
 
 saveas(gcf,'BandFigure.fig');
