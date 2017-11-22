@@ -1,5 +1,8 @@
 #---------------------------shell file for running mpb and extracting data for density-of-states calculation---------------------------
 
+# This is a script for DOS-calculation programs. For more information, please refer to our website:
+# https://github.com/boyuanliuoptics/DOS-calculation/edit/master/DOS_GGR.m
+
 #---------------------------------------
 #  set file names -- user changing part
 #---------------------------------------
