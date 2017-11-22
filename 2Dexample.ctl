@@ -1,3 +1,5 @@
+; This is a 2D example of ctl file for DOS-calculation programs. For more information, please refer to our website:
+; https://github.com/boyuanliuoptics/DOS-calculation/edit/master/DOS_GGR.m
 ;-----------------------------------User changing part begins-----------------------------------------
 
 ;-------------------
