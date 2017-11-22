@@ -2,7 +2,8 @@ function DOS_GGR
 %% DOS calculation using generalized GR (GGR) method
 % The program is for DOS calculation using GGR method, referring
 % to article "Generalized Gilat-Raubenheimer Method for Density-of-States 
-% Calculation in Photonic Crystals".
+% Calculation in Photonic Crystals". For more information, please refer to our website:
+% https://github.com/boyuanliuoptics/DOS-calculation/edit/master/DOS_GGR.m
 
 % The first edition is finished in Nov. 20th, 2017.
 %% Important notice for initial parameters!!!
