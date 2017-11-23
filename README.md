@@ -15,7 +15,7 @@ We suggest to use MIT Phtonic-Bands (MPB) to calculate the frequency band and gr
 Citation
 ----------------------------------------
 
-We propose the GGR method in our article 'Generalized Gilat-Raubenheimer method for density-of-states calculation in photonic crystals'. If you use our code for your research, please cite it properly. It will be post on arxiv soon. To be continue
+We propose the GGR method in our article 'Generalized Gilat-Raubenheimer method for density-of-states calculation in photonic crystals'. If you use our code for your research, please cite it properly. It is post on arXiv:1711.07993.
 
 Usage
 ----------------------------------------
