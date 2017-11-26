@@ -29,8 +29,8 @@ Then use Matlab to run the file *DOS_GGR.m*. It will output the DOS data and the
 
 ![3Dexample](https://github.com/boyuanliuoptics/DOS-calculation/raw/master/3Dexample.bmp)
 
-You can change the settings in the the ctl file to use *DOS_Tr.m* to calculate the DOS and we provide a ctl exmple of two dimension as well. It is ok to use band data from other band-computing softwares, as long as the band data is in the right form.
+You can change the settings in the the ctl file to use *DOS_Tr.m* to calculate the DOS. It is ok to use band data from other band-computing softwares, as long as the band data is in the right form.
 
 Notice and Future Plans
 ----------------------------------------
-The DOS in 2D structures is not as smooth as that in 3D due to the inherent characteristic of the two methods. We will find some other methods more compatible to 2D situations, like adaptive Gaussian broadening method, to give a better solution for 2D sructures in the future.
+The two methods are simple to expand to 2D structures. However, the DOS in 2D structures is not as smooth as that in 3D due to the inherent characteristic of the two methods. Thus we recommend Gaussian method in 2D to obtain a better DOS.
