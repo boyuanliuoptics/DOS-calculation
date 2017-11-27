@@ -90,7 +90,7 @@
 
 (set-param! resolution 16)
 (set-param! mesh-size 2)
-(set-param! num-bands 8)
+(set-param! num-bands 20)
 
 ;-----------------------------------User changing part ends-----------------------------------------
 
