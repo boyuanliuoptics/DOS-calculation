@@ -19,15 +19,15 @@ We propose the GGR method in our article 'Generalized Gilat-Raubenheimer method 
 
 Reference
 
-@article{Liu2017Density,
-archivePrefix = {arXiv},
-arxivId = {1711.07993},
-author = {Liu, Boyuan and Johnson, Steven G. and Joannopoulos, John D. and Lu, Ling},
-eprint = {1711.07993},
-title = {{Generalized Gilat-Raubenheimer method for density-of-states calculation in photonic crystals}},
-url = {http://arxiv.org/abs/1711.07993},
-year = {2017}
-}
+    @article{Liu2017Density,
+    archivePrefix = {arXiv},
+    arxivId = {1711.07993},
+    author = {Liu, Boyuan and Johnson, Steven G. and Joannopoulos, John D. and Lu, Ling},
+    eprint = {1711.07993},
+    title = {{Generalized Gilat-Raubenheimer method for density-of-states calculation in photonic crystals}},
+    url = {http://arxiv.org/abs/1711.07993},
+    year = {2017}
+    }
 
 Usage
 ----------------------------------------
