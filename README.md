@@ -45,4 +45,4 @@ You can change the settings in the the ctl file to use *DOS_Tr.m* to calculate t
 
 Notice and Future Plans
 ----------------------------------------
-The two methods are simple to expand to 2D structures. However, the DOS in 2D structures is not as smooth as that in 3D due to the inherent characteristic of the two methods. Thus we recommend Gaussian method in 2D to obtain a better DOS (be provided in the future).
+The two methods are simple to expand to 2D structures. However, the DOS in 2D structures is not as smooth as that in 3D due to the inherent characteristic of the two methods. Thus we recommend Gaussian method in 2D to obtain a better DOS (will be available soon).
