@@ -4,10 +4,12 @@ function DOS_Tr
 % results of our article "Generalized Gilat-Raubenheimer Method for Density-of-States 
 % Calculation in Photonic Crystals". You can also refer to articles 
 % "G Lehmann and M Taut. On the numerical calculation of the density of states and related properties. physica
-% status solidi (b), 54(2):469{477, 1972" and "Peter E Bl¡§ochl, Ove Jepsen,
+% status solidi (b), 54(2):469{477, 1972" and "Peter E BlÂ¡Â§ochl, Ove Jepsen,
 % and Ole Krogh Andersen. Improved tetrahedron method for brillouin-zone 
 % integrations. Physical Review B, 49(23):16223, 1994" for details of
 % tetrahedron method.
+% For more information, please refer to our website:
+% https://github.com/boyuanliuoptics/DOS-calculation/edit/master/DOS_GGR.m
 
 % The first edition is finished in Nov. 20th, 2017.
 %% Important notice for initial parameters!!!
@@ -107,7 +109,7 @@ for n_k = 1:n_kpoints
     end
 end
 
-% optimize the grid according to "Peter E Bl¡§ochl, Ove Jepsen,
+% optimize the grid according to "Peter E BlÂ¡Â§ochl, Ove Jepsen,
 % and Ole Krogh Andersen. Improved tetrahedron method for brillouin-zone 
 % integrations. Physical Review B, 49(23):16223, 1994".
 diagnal_len0=norm(reciprocalvector1+reciprocalvector2+reciprocalvector3);
