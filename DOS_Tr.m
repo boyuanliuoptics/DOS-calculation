@@ -4,12 +4,10 @@ function DOS_Tr
 % results of our article "Generalized Gilat-Raubenheimer Method for Density-of-States 
 % Calculation in Photonic Crystals". You can also refer to articles 
 % "G Lehmann and M Taut. On the numerical calculation of the density of states and related properties. physica
-% status solidi (b), 54(2):469{477, 1972" and "Peter E BlÂ¡Â§ochl, Ove Jepsen,
+% status solidi (b), 54(2):469{477, 1972" and "Peter E Bl¡§ochl, Ove Jepsen,
 % and Ole Krogh Andersen. Improved tetrahedron method for brillouin-zone 
 % integrations. Physical Review B, 49(23):16223, 1994" for details of
-% tetrahedron method. 
-% For more information, please refer to our website:
-% https://github.com/boyuanliuoptics/DOS-calculation/edit/master/DOS_GGR.m
+% tetrahedron method.
 
 % The first edition is finished in Nov. 20th, 2017.
 %% Important notice for initial parameters!!!
@@ -49,20 +47,15 @@ b_len=[1/2, 1, 1];
 % if it is 2D structure, num_kpoints(3) should be 1.
 num_kpoints=[6,12,12]; 
 
-N_band=8;       % the total number of frequency bands
+N_band=20;       % the total number of frequency bands
 
 w_max_custom=-1;   % the range of frequency, '-1' denotes default settings
 w_min_custom=-1;
 
-N_w=20000;       % denotes the resolution of frequency : dw = (w_max - w_min) / N_w
-
 kinter = 30;       % the inter quantity of k points between two high symmetry points
-maxDOS_custom=-1;        % the parameters about plot, '-1' denotes default settings
-fs_custom=10;           
-bandcolor_custom='b';
-bottomcolor_custom='k';
-thelinewidth_custom=1;
-% sequence_points={'\Gamma','M','K','\Gamma'};    % sequence of high symmetry points in 2D example
+maxDOS_custom=100;        % the parameters about plot, '-1' denotes default settings
+w_max_dsp_coefficient=0.9;  % the displaying maximum frequency is the product of w_max_dsp_coefficient and w_max
+N_w=20000;       % denotes the resolution of frequency : dw = (w_max - w_min) / N_w
 sequence_points={'H','\Gamma','N','P','\Gamma'};    % sequence of high symmetry points in 3D example
 %% Initialization and import data
 
@@ -114,7 +107,7 @@ for n_k = 1:n_kpoints
     end
 end
 
-% optimize the grid according to "Peter E BlÂ¡Â§ochl, Ove Jepsen,
+% optimize the grid according to "Peter E Bl¡§ochl, Ove Jepsen,
 % and Ole Krogh Andersen. Improved tetrahedron method for brillouin-zone 
 % integrations. Physical Review B, 49(23):16223, 1994".
 diagnal_len0=norm(reciprocalvector1+reciprocalvector2+reciprocalvector3);
@@ -223,6 +216,7 @@ for nprint_w=1:N_w+1
     fprintf(file_output,'%.10f %.10f\n',w_min+step_w*(nprint_w-1),DOSarray(nprint_w));
 end
 fclose(file_output);
+
 %% Band plot and DOS
 % import band data
 if draw_band==0
@@ -273,13 +267,16 @@ for i=1:imax
 end
 kidx=[kidx,k2];
 
-fs=fs_custom;
-bandcolor=bandcolor_custom;
-bottomcolor=bottomcolor_custom;
-thelinewidth=thelinewidth_custom;
+fs=10;
+bandcolor=[34 34 120]/255;
+doscolor=[122 122 174]/255;
+bottomcolor='k';
+bandlinewidth=1;
+doslinewidth=1;
+w_max_lim=w_max*w_max_dsp_coefficient;
 figure
 for i = 1:nbands 
-    plot(Ks,data_band(:,3+i),'-','color',bandcolor,'LineWidth',thelinewidth);
+    plot(Ks,data_band(:,3+i),'-','color',bandcolor,'LineWidth',bandlinewidth);
     hold on;
 end
 
@@ -292,17 +289,17 @@ end
 DOSarray(DOSarray>maxDOS)=maxDOS;
 w_var=w_min+step_w*((1:(N_w+1))-1);   % frequency -- the variable of DOS
 DOS_nrm=(Ks(end)-Ks(1))*DOSarray/maxDOS+Ks(end);
-plot(DOS_nrm,w_var,'Color',bandcolor);
-fill(DOS_nrm,w_var,bandcolor);
+plot(DOS_nrm,w_var,'Color',bandcolor,'LineWidth',doslinewidth);
+fill(DOS_nrm,w_var,doscolor);
 plot(DOS_nrm(1)*ones(size(w_var,2),1),w_var,'color',bottomcolor);
-set(gca,'FontSize',fs,'FontName','Helvetica','Layer','top');
 sequence_points{end}=strcat(sequence_points{end},' (0)');
 set(gca,'xTick', [Ks(kidx),Ks(end)*2],'XTickLabel',[sequence_points, num2str(maxDOS)],...
     'XGrid','on','GridLineStyle','-','layer','bottom');
 xlim([Ks(1),2*Ks(end)]);
-ylim([w_min,w_max]);
-ylabel('Frequency (a/2\pi c)');
-title('Band structure and DOS (2\pi c/a)');
+ylim([w_min,w_max_lim]);
+ylabel('Frequency (a/(2\pic))');
+title('Band structure and DOS (2\pic/a)');
+set(gca,'FontSize',fs,'FontName','Helvetica','Layer','top');
 hold off
 
 saveas(gcf,'BandFigure.fig');
