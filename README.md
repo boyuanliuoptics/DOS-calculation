@@ -39,7 +39,7 @@ and it will run MPB with the structure-data file *3Dexample.ctl* in the same fol
 
 Then use Matlab to run the file *DOS_GGR.m*. It will output the DOS data and the corresponding plot as below.
 
-![3Dexample](https://github.com/boyuanliuoptics/DOS-calculation/raw/master/3Dexample.png)
+
 
 You can change the settings in the the ctl file to use *DOS_Tr.m* to calculate the DOS. It is ok to use band data from other band-computing softwares, as long as the band data is in the right form.
 
