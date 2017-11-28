@@ -2,10 +2,8 @@ function DOS_GGR
 %% DOS calculation using generalized GR (GGR) method
 % The program is for DOS calculation using GGR method, referring
 % to article "Generalized Gilat-Raubenheimer Method for Density-of-States 
-% Calculation in Photonic Crystals". 
-% For more information, please refer to our website:
+% Calculation in Photonic Crystals". For more information, please refer to our website:
 % https://github.com/boyuanliuoptics/DOS-calculation/edit/master/DOS_GGR.m
-
 % The first edition is finished in Nov. 20th, 2017.
 %% Important notice for initial parameters!!!
 % Necessary parameters: 
@@ -47,11 +45,11 @@ N_band=20;      % the total number of frequency bands
 
 w_max_custom=-1;   % the range of frequency, '-1' denotes default settings
 w_min_custom=-1;
-w_max_dsp_coefficient=0.95;  % the displaying maximum frequency is the product of w_max_dsp_coefficient and w_max
+w_max_dsp_coefficient=0.9;  % the displaying maximum frequency is the product of w_max_dsp_coefficient and w_max
 N_w_custom=20000;       % denotes the resolution of frequency : dw = (w_max - w_min) / N_w
 
 kinter = 30;       % the inter quantity of k points between two high symmetry points
-maxDOS_custom=150;        % the parameters about plot, '-1' denotes default settings
+maxDOS_custom=100;        % the parameters about plot, '-1' denotes default settings
 sequence_points={'H','\Gamma','N','P','\Gamma'};    % sequence of high symmetry points in 3D example
 %% Initialization and import data
 % the reciprocal vectors initialization
@@ -215,8 +213,8 @@ end
 kidx=[kidx,k2];
 
 fs=10;
-bandcolor='b';
-doscolor=[194 210 242]/255;
+bandcolor=[34 34 120]/255;
+doscolor=[122 122 174]/255;
 bottomcolor='k';
 bandlinewidth=1;
 doslinewidth=1;
