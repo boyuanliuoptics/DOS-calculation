@@ -54,6 +54,8 @@ Firstly, make the input data files into the same format as the output files of *
 
 #### *band.txt*
 
+Storing the frequency band for drawing band structure in line.
+
         0.5 -0.5 0.5 0.418621 0.418708 0.418778 ... 0.799886 0.800063
         0.483871 -0.483871 0.483871 0.417886 0.417935 0.418915 ... 0.799816 0.800123
         0.467742 -0.467742 0.467742 0.415525 0.415591 0.419394 ... 0.799351 0.79984
@@ -66,6 +68,8 @@ Position and band information of different k-points is in the same line. The val
 
 #### *frequency_GGR.txt*
 
+Storing the frequency band for GGR DOS calculation.
+
         0.342301
         0.34426
         0.39272
@@ -76,6 +80,8 @@ The number in the one row is one band frequency of some k-point. Each frequency 
 
 #### *velocity_GGR.txt*
 
+Storing the group velocity for GGR DOS calculation.
+
         0.03878239605480597 0.050501326087597484 0.05049987902906693
         0.05418725891376245 0.05776810445673396 0.05776682796316916
         0.005300927843952232 0.021269420720856042 0.021267892167480044
@@ -85,6 +91,8 @@ The number in the one row is one band frequency of some k-point. Each frequency 
 The numbers in one row are three orthogonal components of group velocity of some k-point in some band. Each group velocity (three numbers) is divided by a '\n'. You only need to ensure that the group velocity sequence is in accordance with that of *frequency_GGR.txt*.
 
 #### *frequency_Tr.txt*
+
+Storing the frequency band and position of smapling k points for Tr DOS calculation.
 
         0 -0.5 -0.5 0.336365 0.336982 0.390348 ... 0.809612 0.812481
         0.1 -0.5 -0.5 0.343023 0.343637 0.394022 ... 0.809883 0.81058
