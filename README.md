@@ -34,7 +34,7 @@ Usage
 
 There are two ways to use our programs. The first one is to input the band data directly to the DOS calculation programs and the other one is to use MPB compute the band data and input them into the DOS calculation programs. Both two ways require user set the parameters about the photonic crystals correctly in the DOS calculation programs and the input band data files must be in the right form. We provide two DOS calculation programs with different algorithms, and their input files have different requirement as well.
 
-*Using MPB to obatain band data
+* Using MPB to obatain band data
 
 Firstly, run script file *dompb.sh* in Linux system,
 
