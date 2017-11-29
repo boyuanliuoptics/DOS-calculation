@@ -32,7 +32,7 @@ Reference
 ## Usage
 
 
-There are two ways to use our programs.  The first one is to use MPB compute the band data and input them into the DOS calculation programs and the other one is to input the band data directly to the DOS calculation programs. Both ways require user to set the parameters of the photonic crystals correctly in the DOS calculation programs and to adjust the input band data files in the right format. We provide two DOS calculation programs, *DOS_GGR.m* and *DOS_GGR.m*, with different algorithms, and their input files have different requirement as well. The following is the guide of the two ways.
+There are two ways to use our programs to calculate DOS.  The first one is to use MPB compute the band data and input them into the DOS calculation programs and the other one is to input the band data directly to the DOS calculation programs. Both ways require user to set the parameters of the photonic crystals correctly in the DOS calculation programs and to adjust the input band data files in the right format. We provide two DOS calculation programs, *DOS_GGR.m* and *DOS_GGR.m*, with different algorithms, and their input files have different requirement as well. The following is the guide of the two ways.
 
 ### Using MPB to obatain band data
 
