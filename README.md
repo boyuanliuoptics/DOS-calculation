@@ -50,9 +50,11 @@ You can also change the settings in the the ctl file at the beginning so that th
 
 ### Using other band-computing softwares to obatain band data
 
-Firstly, make the input data files into the same format as the output files of *dompb.sh*.
+Firstly, make the input data files into the same format as the output files of *dompb.sh*. Then put the data files and DOS calculation file *DOS_GGR.m* in the same directory and use Matlab to run the file *DOS_GGR.m* or *DOS_Tr.m* according to the input files and the alogrithm.
 
-#### *band.txt*
+The input files are *band.txt*, *frequency_GGR.txt* and *velocity_GGR.txt* for *DOS_GGR.m*, or *band.txt* and *frequency_Tr.txt* for *DOS_Tr.m*. The right format of each file is as below.
+
+#### *band.txt* (optional)
 
 Storing the frequency band for drawing band structure in line.
 
@@ -104,4 +106,4 @@ The data format is the same as that of *band.txt*.
 
 ## Notice and Future Plans
 
-The two methods are simple to expand to 2D structures. However, the DOS in 2D structures is not as smooth as that in 3D due to the inherent characteristic of the two methods. Thus we recommend Gaussian method in 2D to obtain a better DOS (will be available soon).
+The two algorithms GGR and Tr are simple to expand to 2D structures. However, the DOS in 2D structures is not as smooth as that in 3D due to bad continuity of the two methods. Thus we recommend [Gaussian method](https://github.com/stevengj/mpb/blob/master/examples/dos.scm) in 2D to obtain a better DOS.
