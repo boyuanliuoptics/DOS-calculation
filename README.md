@@ -104,6 +104,6 @@ Storing the frequency band and position of sampling k points for Tr DOS calculat
 
 The data format is the same as that of *band.txt*.
 
-## Notice and Future Plans
+## Two dimentianal cases
 
 The two algorithms GGR and Tr are simple to expand to 2D structures. However, the DOS in 2D structures is not as smooth as that in 3D due to discontinuity of the two methods. Thus we recommend [Gaussian method](https://github.com/stevengj/mpb/blob/master/examples/dos.scm) in 2D to obtain a better DOS.
