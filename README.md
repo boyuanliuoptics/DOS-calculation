@@ -3,14 +3,14 @@
 
 ## Authorship
 
-Written by Boyuan Liu (zkdlby@mail.ustc.edu.cn) in [L01 group](http://l01.iphy.ac.cn/L01web-English/html/index-english.html) in Institute of Physics CAS leadered by [Prof. Ling Lu](http://l01.iphy.ac.cn/linglu/). 
+Written by Boyuan Liu (zkdlby@mail.ustc.edu.cn) in [L01 group](http://l01.iphy.ac.cn/L01web-English/html/index-english.html) in Institute of Physics CAS leaded by [Prof. Ling Lu](http://l01.iphy.ac.cn/linglu/). 
 
 ## Brief Introduction
 
 
 We present two open-source programs to calculate density of states (DOS) in photonic crystals using Generalized-Gilat-Raubenheimer (GGR) method and tetrahedron (Tr) method respectively. GGR method program needs both the frequency band data and group velocity data to calculate DOS and tetrahedron method program only needs band data while has a relative less accuracy compared with GGR. 
 
-We suggest to use MIT Phtonic-Bands (MPB) to calculate the frequency band and group velocity. Input these data files into the DOS calculation program 'DOS_GR.m' or 'DOS_Tr.m' to obtain the DOS of the structure. You can also directly input the data files from other band-compuating softwares to the DOS program, on the condition that the data is arranged in the right format in the files.
+We suggest to use MIT Photonic-Bands (MPB) to calculate the frequency band and group velocity. Input these data files into the DOS calculation program 'DOS_GR.m' or 'DOS_Tr.m' to obtain the DOS of the structure. You can also directly input the data files from other band-computing softwares to the DOS program, on the condition that the data is arranged in the right format in the files.
 
 ## Citation
 
@@ -34,7 +34,7 @@ Reference
 
 There are two ways to use our programs to calculate DOS.  The first one is to use MPB compute the band data and input them into the DOS calculation programs and the other one is to input the band data directly to the DOS calculation programs. Both ways require user to set the parameters of the photonic crystals correctly in the DOS calculation programs and to adjust the input band data files in the right format. We provide two DOS calculation programs, *DOS_GGR.m* and *DOS_GGR.m*, with different algorithms, and their input files have different requirement as well. The following is the guide of the two ways.
 
-### Using MPB to obatain band data
+### Using MPB to obtain band data
 
 Firstly, run script file *dompb.sh* in Linux system,
 
@@ -48,9 +48,9 @@ Then put the data files and DOS calculation file *DOS_GGR.m* in the same directo
 
 You can also change the settings in the the ctl file at the beginning so that the script file *dompb.sh* will output the data for *DOS_Tr.m*. Then run the file *DOS_Tr.m* with the band data files in the same directory. It will output the DOS data and the corresponding plot.
 
-### Using other band-computing softwares to obatain band data
+### Using other band-computing softwares to obtain band data
 
-Firstly, make the input data files into the same format as the output files of *dompb.sh*. Then put the data files and DOS calculation file *DOS_GGR.m* in the same directory and use Matlab to run the file *DOS_GGR.m* or *DOS_Tr.m* according to the input files and the alogrithm.
+Firstly, make the input data files into the same format as the output files of *dompb.sh*. Then put the data files and DOS calculation file *DOS_GGR.m* in the same directory and use Matlab to run the file *DOS_GGR.m* or *DOS_Tr.m* according to the input files and the algorithm.
 
 The input files are *band.txt*, *frequency_GGR.txt* and *velocity_GGR.txt* for *DOS_GGR.m*, or *band.txt* and *frequency_Tr.txt* for *DOS_Tr.m*. The right format of each file is as below.
 
@@ -66,7 +66,7 @@ Storing the frequency band for drawing band structure in line.
 
 In one row, the first three numbers are the coordinate components of one point in k-space, whose units are the reciprocal vectors. The following numbers are band frequencies at this point in ascending order.
 
-Position and band information of different k-points is in the same line. The values (including coordinates and band frequencies) in the same line should be divided by one sapce.
+Position and band information of different k-points is in the same line. The values (including coordinates and band frequencies) in the same line should be divided by one space.
 
 #### *frequency_GGR.txt*
 
@@ -94,7 +94,7 @@ The numbers in one row are three orthogonal components of group velocity of some
 
 #### *frequency_Tr.txt*
 
-Storing the frequency band and position of smapling k points for Tr DOS calculation.
+Storing the frequency band and position of sampling k points for Tr DOS calculation.
 
         0 -0.5 -0.5 0.336365 0.336982 0.390348 ... 0.809612 0.812481
         0.1 -0.5 -0.5 0.343023 0.343637 0.394022 ... 0.809883 0.81058
@@ -106,4 +106,4 @@ The data format is the same as that of *band.txt*.
 
 ## Notice and Future Plans
 
-The two algorithms GGR and Tr are simple to expand to 2D structures. However, the DOS in 2D structures is not as smooth as that in 3D due to uncontinuity of the two methods. Thus we recommend [Gaussian method](https://github.com/stevengj/mpb/blob/master/examples/dos.scm) in 2D to obtain a better DOS.
+The two algorithms GGR and Tr are simple to expand to 2D structures. However, the DOS in 2D structures is not as smooth as that in 3D due to discontinuity of the two methods. Thus we recommend [Gaussian method](https://github.com/stevengj/mpb/blob/master/examples/dos.scm) in 2D to obtain a better DOS.
