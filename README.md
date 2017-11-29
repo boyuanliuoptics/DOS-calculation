@@ -32,7 +32,7 @@ Reference
 ## Usage
 
 
-There are two ways to use our programs. The first one is to input the band data directly to the DOS calculation programs and the other one is to use MPB compute the band data and input them into the DOS calculation programs. Both two ways require user set the parameters about the photonic crystals correctly in the DOS calculation programs and the input band data files must be in the right form. We provide two DOS calculation programs with different algorithms, and their input files have different requirement as well.
+There are two ways to use our programs.  The first one is to use MPB compute the band data and input them into the DOS calculation programs and the other one is to input the band data directly to the DOS calculation programs. Both ways require user set the parameters of the photonic crystals correctly in the DOS calculation programs and the input band data files must be in the right format. We provide two DOS calculation programs, *DOS_GGR.m* and *DOS_GGR.m*, with different algorithms, and their input files have different requirement as well. The following is the guide with examples for the two ways.
 
 ### Using MPB to obatain band data
 
@@ -42,11 +42,15 @@ Firstly, run script file *dompb.sh* in Linux system,
     
 and it will run MPB with the structure-data file *3Dexample.ctl* in the same folder and process the band data and group velocity data into correct format.
 
-Then use Matlab to run the file *DOS_GGR.m*. It will output the DOS data and the corresponding plot as below.
+Then put the data files and DOS calculation file *DOS_GGR.m* in the same directory and use Matlab to run the file *DOS_GGR.m*. It will output the DOS data and the corresponding plot as below.
 
 ![3Dexample](https://github.com/boyuanliuoptics/DOS-calculation/blob/master/3Dexample.png)
 
-You can change the settings in the the ctl file to use *DOS_Tr.m* to calculate the DOS. It is ok to use band data from other band-computing softwares, as long as the band data is in the right form.
+You can change the settings in the the ctl file at the beginning so that the script file *dompb.sh* will output the data for *DOS_Tr.m*. Then run the file *DOS_Tr.m* with the band data files in the same directory. It will output the DOS data and the corresponding plot as well.
+
+### Using other band-computing softwares to obatain band data
+
+The band data is in the right form.
 
 ## Notice and Future Plans
 
