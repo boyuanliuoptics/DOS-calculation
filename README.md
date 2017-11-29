@@ -106,4 +106,4 @@ The data format is the same as that of *band.txt*.
 
 ## Notice and Future Plans
 
-The two algorithms GGR and Tr are simple to expand to 2D structures. However, the DOS in 2D structures is not as smooth as that in 3D due to bad continuity of the two methods. Thus we recommend [Gaussian method](https://github.com/stevengj/mpb/blob/master/examples/dos.scm) in 2D to obtain a better DOS.
+The two algorithms GGR and Tr are simple to expand to 2D structures. However, the DOS in 2D structures is not as smooth as that in 3D due to uncontinuity of the two methods. Thus we recommend [Gaussian method](https://github.com/stevengj/mpb/blob/master/examples/dos.scm) in 2D to obtain a better DOS.
