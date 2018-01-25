@@ -52,7 +52,8 @@
 
 ;switch for computing the band in the line 
 ;if you want only want to calculate DOS, change 'true' to any other word. It will be detected in the shell file.
-;switch-> true
+; true -> calculate DOS and band, false -> only calculate DOS
+(define switch true)
 
 ;high symmetry points in the band
 (define G (vector3 0 0 0))
