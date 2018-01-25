@@ -47,7 +47,7 @@
 (set! default-material (make material-function (material-func eps-func)))
 
 ;-----------------------------------------------------
-; computing setting -- for drawing band stucture line
+; computing setting -- for drawing band structure line
 ;-----------------------------------------------------
 
 ;switch for computing the band in the line 
@@ -70,13 +70,13 @@
 ; computing setting -- for density of states computation
 ;--------------------------------------------------------
 
-;when there is time-reversial (T) symmetry we can use half of the Brillouin zone (BZ), that is x ranges in [0,bx/2] with num-k/2-1 points in this dimension
+;when there is time-reversal (T) symmetry we can use half of the Brillouin zone (BZ), that is x ranges in [0,bx/2] with num-k/2-1 points in this dimension
 ;the 'true' is computing with T-symmetry. change 'true' to 'false' if you want to compute the whole BZ 
 ; true -> half of BZ, false -> whole BZ 
 (define-param T-symmetry? true)
 
 ;choose one method to use: GGR or tetrahedron (Tr) method.
-;the grid of two methods is different and both of two need to cover the complete BZ volumn (or half of BZ)
+;the grid of two methods is different and both of two need to cover the complete BZ volume (or half of BZ)
 ;the 'false' is GGR method. change 'false' to 'true' if you want to use Tr method.
 ;false -> GGR, true -> Tr
 (define-param GGR-Tr? false)
@@ -97,7 +97,7 @@
 ;the BZ ranges in [-kx,+kx]^3
 (define kx (/ 1 2))
 
-;k-shift-GGR is half of the distance between two k ajacent points in one dimension 
+;k-shift-GGR is half of the distance between two k adjacent points in one dimension 
 (define k-shift-GGR (/ kx (+ 2 num-k)))
 (define k-shift 0)
 (if GGR-Tr?
