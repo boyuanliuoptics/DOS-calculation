@@ -1,6 +1,8 @@
 ; This is a 3D example of ctl file for DOS-calculation programs. For more information, please refer to our website:
 ; https://github.com/boyuanliuoptics/DOS-calculation/edit/master/DOS_GGR.m
 
+; If you have written a .ctl file, then you can copy the codes following your file and delete the "structure setting" part and "computing setting -- accuracy and number of bands" part (as they have already been set in your file). 
+
 ;-----------------------------------User changing part begins-----------------------------------------
 
 ;-------------------
@@ -46,6 +48,14 @@
 
 (set! default-material (make material-function (material-func eps-func)))
 
+;---------------------------------------------------
+; computing setting -- accuracy and number of bands
+;---------------------------------------------------
+
+(set-param! resolution 16)
+(set-param! mesh-size 2)
+(set-param! num-bands 20)
+
 ;-----------------------------------------------------
 ; computing setting -- for drawing band structure line
 ;-----------------------------------------------------
@@ -84,14 +94,6 @@
 
 ;num-k is the inter number of k points along one dimension when sampling the BZ
 (define-param num-k 10); num-k should be even number to make the mesh avoid Gamma point when using GGR method or T-symmetry reduction
-
-;---------------------------------------------------
-; computing setting -- accuracy and number of bands
-;---------------------------------------------------
-
-(set-param! resolution 16)
-(set-param! mesh-size 2)
-(set-param! num-bands 20)
 
 ;-----------------------------------User changing part ends-----------------------------------------
 
