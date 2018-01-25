@@ -106,4 +106,4 @@ The data format is the same as that of *band.txt*.
 
 ## 2D cases
 
-We expand GGR and Tr methods into in 2D structures and find that the DOS of 2D structures has a bad smoothness (discontinuity in its first derivative) which do not appear in 3D. The reason for this zigzag DOS plot is that the formula of DOS contribution of each subcell in 2D cases is not continous in the first derivative. Thus we recommend [Gaussian method](https://github.com/stevengj/mpb/blob/master/examples/dos.scm) in 2D to obtain a better DOS.
+We expand GGR and Tr methods into in 2D structures and find that the DOS of 2D structures has bad smoothness (discontinuity in its first derivative) which do not appear in 3D. The reason for this zigzag DOS plot is that the formula of DOS contribution of each subcell in 2D cases is not continous in the first derivative. (https://github.com/stevengj/mpb/blob/master/examples/dos.scm) in 2D to obtain a better DOS.
