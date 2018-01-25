@@ -24,23 +24,22 @@
 (define-param isoval -1.1);isovalue to choose packing fraction
 (define pi (* 4 (atan 1)))
 (define FB
-(lambda (h k l x y z)
-(* (cos (* 2 pi (+ h k l) 0.25)) (+ 
-	(* (sin (* 2 pi (+ (* h x) (/ l 4)))) (sin (* 2 pi (+ (* k y) (/ h 4)))) (sin (* 2 pi (+ (* l z) (/ k 4)))))
-	(* (sin (* 2 pi (+ (* h y) (/ l 4)))) (sin (* 2 pi (+ (* k z) (/ h 4)))) (sin (* 2 pi (+ (* l x) (/ k 4)))))
-	(* (sin (* 2 pi (+ (* h z) (/ l 4)))) (sin (* 2 pi (+ (* k x) (/ h 4)))) (sin (* 2 pi (+ (* l y) (/ k 4)))))
-))))
-(define-param b 1)
-(define-param c 1)
+(lambda (x y z)
+(+  
+	(* (sin (* 2 pi x)) (sin (* 2 y)))
+	(* (sin (* 2 pi y)) (sin (* 2 z)))
+	(* (sin (* 2 pi z)) (sin (* 2 x)))
+)))
+
 (define (eps-func p-lattice)
 (let* ((p (lattice->cartesian p-lattice))
 (x (vector3-x p))
 (y (vector3-y p))
 (z (vector3-z p)))
 (if 
-(< (FB 1 1 0 x (/ y b) (/ z c)) isoval)
+(< (FB x y z) isoval)
 	(make dielectric-anisotropic (epsilon-diag eps eps eps) (epsilon-offdiag 0 0 0))
-	(if (< (FB 1 1 0 (- x) (- (/ y b)) (- (/ z c))) isoval)
+	(if (< (FB (- x) (- y) (- z)) isoval)
 		(make dielectric-anisotropic (epsilon-diag eps eps eps) (epsilon-offdiag 0 0 0))
 		(make dielectric (epsilon epsbg)))
 )
@@ -55,6 +54,11 @@
 (set-param! resolution 16)
 (set-param! mesh-size 2)
 (set-param! num-bands 20)
+
+;---------------------------------------------------
+;---------------------------------------------------
+
+; Copy the following codes after your executable .ctl file. Please annotate the (run) statement of your codes and check the following parameters carefully.
 
 ;-----------------------------------------------------
 ; computing setting -- for drawing band structure line
