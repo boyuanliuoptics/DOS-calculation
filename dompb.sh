@@ -22,7 +22,7 @@ file_output_map_kfrequency="frequency_Tr.txt"
 #---------------------------------------
 
 # if you want only want to calculate DOS and skip #1, change 'true' to any other word in '*.ctl' file.
-Theswitch=$(grep 'switch->' $file_band_ctl | cut -d '>' -f 2- | sed 's/)//g')
+Theswitch=$(grep '(define switch ' $file_band_ctl | cut -d ' ' -f 2- | sed 's/)//g')
 if [ $Theswitch = true ]; then
 	# compute frequency band on lines for drawing band structure 
 	mpb Zone?=false $file_band_ctl > $data_bandline 
