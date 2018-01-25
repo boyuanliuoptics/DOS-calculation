@@ -82,7 +82,7 @@
 (define-param GGR-Tr? false)
 
 ;num-k is the inter number of k points along one dimension when sampling the BZ
-(define-param num-k 10); num-k should be even number to make the mesh avoid Gamma point when using GGR method or T-symmetry reducement
+(define-param num-k 10); num-k should be even number to make the mesh avoid Gamma point when using GGR method or T-symmetry reduction
 
 ;---------------------------------------------------
 ; computing setting -- accuracy and number of bands
