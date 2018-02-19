@@ -15,18 +15,18 @@ We suggest to use MIT Photonic-Bands (MPB) to calculate the frequency band and g
 ## Citation
 
 
-We propose the GGR method in our article ['Generalized Gilat-Raubenheimer method for density-of-states calculation in photonic crystals'](http://arxiv.org/abs/1711.07993). If you use our code for your research, please cite it properly, like  "The density of states is calculated by the program in  \cite{Liu2017GGR}. "
+We propose the GGR method in our article ['Generalized Gilat-Raubenheimer method for density-of-states calculation in photonic crystals'](https://doi.org/10.1088/2040-8986/aaae52). If you use our code for your research, please cite it properly, like  "The density of states is calculated by the program in  \cite{Liu2017GGR}. "
 
 Reference
 
-    @article{Liu2017GGR,
-    archivePrefix = {arXiv},
-    arxivId = {1711.07993},
-    author = {Liu, Boyuan and Johnson, Steven G. and Joannopoulos, John D. and Lu, Ling},
-    eprint = {1711.07993},
-    title = {{Generalized Gilat-Raubenheimer method for density-of-states calculation in photonic crystals}},
-    url = {http://arxiv.org/abs/1711.07993},
-    year = {2017}
+    @article{10.1088/2040-8986/aaae52,
+      author={Boyuan Liu and J D Joannopoulos and Steven G Johnson and Ling Lu},
+        title={Generalized Gilat-Raubenheimer method for density-of-states calculation in photonic crystals},
+      journal={Journal of Optics},
+
+      url={http://iopscience.iop.org/10.1088/2040-8986/aaae52},
+      year={2018},
+      abstract={Abstract Efficient numeric algorithm is the key for accurate evaluation of density of states (DOS) in band theory. Gilat-Raubenheimer (GR) method proposed in 1966 is an efficient linear extrapolation method which was limited in specific lattices. Here, using an affine transformation, we provide a new generalization of the original GR method to any Bravais lattices and show that it is superior to the tetrahedron method and the adaptive Gaussian broadening method. Finally, we apply our generalized GR (GGR) method to compute DOS of various gyroid photonic crystals of topological degeneracies.}
     }
 
 ## Usage
