@@ -24,7 +24,7 @@ Reference
         title={Generalized Gilat-Raubenheimer method for density-of-states calculation in photonic crystals},
       journal={Journal of Optics},
 
-      url={http://iopscience.iop.org/10.1088/2040-8986/aaae52},
+      url={https://doi.org/10.1088/2040-8986/aaae52},
       year={2018},
       abstract={Abstract Efficient numeric algorithm is the key for accurate evaluation of density of states (DOS) in band theory. Gilat-Raubenheimer (GR) method proposed in 1966 is an efficient linear extrapolation method which was limited in specific lattices. Here, using an affine transformation, we provide a new generalization of the original GR method to any Bravais lattices and show that it is superior to the tetrahedron method and the adaptive Gaussian broadening method. Finally, we apply our generalized GR (GGR) method to compute DOS of various gyroid photonic crystals of topological degeneracies.}
     }
