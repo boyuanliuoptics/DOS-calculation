@@ -3,7 +3,7 @@
 
 ## Authorship
 
-Written by Boyuan Liu (zkdlby@mail.ustc.edu.cn) in [L01 group](http://l01.iphy.ac.cn/L01web-English/html/index-english.html) in Institute of Physics CAS leaded by [Prof. Ling Lu](http://l01.iphy.ac.cn/linglu/). 
+Written by Boyuan Liu (zkdlby@mail.ustc.edu.cn) in [L01 group](http://l01.iphy.ac.cn/L01web-English/html/index-english.html) in Institute of Physics CAS, under instruction of [Prof. Ling Lu](http://l01.iphy.ac.cn/linglu/). 
 
 ## Brief Introduction
 
