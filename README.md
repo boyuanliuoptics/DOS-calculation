@@ -42,7 +42,7 @@ Firstly, run script file *dompb.sh* in Linux system,
     
 and it will run MPB with the structure-data file *3Dexample.ctl* in the same folder and process the band data and group velocity data into correct format.
 
-Then put the data files and DOS calculation file *DOS_GGR.m* in the same directory and use Matlab to run the file *DOS_GGR.m*. It will output the DOS data and the corresponding plot as below.
+Then put the data files and DOS calculation file *DOS_GGR.m* in the same directory and use Matlab to run the file *DOS_GGR.m*. It will output the DOS data and the corresponding plot as below (the structure figure is added afterwards).
 
 ![example](https://github.com/boyuanliuoptics/DOS-calculation/blob/master/example.png)
 
