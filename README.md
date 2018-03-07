@@ -44,7 +44,7 @@ and it will run MPB with the structure-data file *3Dexample.ctl* in the same fol
 
 Then put the data files and DOS calculation file *DOS_GGR.m* in the same directory and use Matlab to run the file *DOS_GGR.m*. It will output the DOS data and the corresponding plot as below.
 
-![3Dexample](https://github.com/boyuanliuoptics/DOS-calculation/blob/master/3Dexample.png)
+![example](https://github.com/boyuanliuoptics/DOS-calculation/blob/master/example.png)
 
 You can also change the settings in the the ctl file at the beginning so that the script file *dompb.sh* will output the data for *DOS_Tr.m*. Then run the file *DOS_Tr.m* with the band data files in the same directory. It will output the DOS data and the corresponding plot.
 
