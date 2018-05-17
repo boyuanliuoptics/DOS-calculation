@@ -239,7 +239,7 @@ plot(DOS_nrm,w_var,'Color',bandcolor,'LineWidth',doslinewidth);
 fill(DOS_nrm,w_var,doscolor);
 plot(DOS_nrm(1)*ones(size(w_var,2),1),w_var,'color',bottomcolor);
 sequence_points{end}=strcat(sequence_points{end},' (0)');
-set(gca,'xTick', [Ks(kidx),Ks(end)*2],'XTickLabel',[sequence_points, num2str(maxDOS)],...
+set(gca,'xTick', [Ks(kidx),Ks(end)*(1+DOSratio)],'XTickLabel',[sequence_points, num2str(maxDOS)],...
     'XGrid','on','GridLineStyle','-','layer','bottom');
 xlim([Ks(1),(1+DOSratio)*Ks(end)]);
 ylim([w_min,w_max_lim]);
