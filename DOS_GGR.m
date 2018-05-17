@@ -1,4 +1,4 @@
-function DOS_GGR
+% function DOS_GGR
 %% DOS calculation using generalized GR (GGR) method
 % The program is for DOS calculation using GGR method, referring
 % to article "Generalized Gilat-Raubenheimer Method for Density-of-States 
@@ -51,6 +51,7 @@ N_w_custom=20000;       % denotes the resolution of frequency : dw = (w_max - w_
 kinter = 30;       % the inter quantity of k points between two high symmetry points
 maxDOS_custom=100;        % the parameters about plot, '-1' denotes default settings
 sequence_points={'H','\Gamma','N','P','\Gamma'};    % sequence of high symmetry points in 3D example
+DOSratio=1;        % the plot ratio of DOS in x axis 
 %% Initialization and import data
 % the reciprocal vectors initialization
 vectorb1=reciprocalvector1;
@@ -233,14 +234,14 @@ end
 
 DOSarray(DOSarray>maxDOS)=maxDOS;
 w_var=w_min+step_w*((1:(N_w+1))-1);   % frequency -- the variable of DOS
-DOS_nrm=(Ks(end)-Ks(1))*DOSarray/maxDOS+Ks(end);
+DOS_nrm=DOSratio*(Ks(end)-Ks(1))*DOSarray/maxDOS+Ks(end);
 plot(DOS_nrm,w_var,'Color',bandcolor,'LineWidth',doslinewidth);
 fill(DOS_nrm,w_var,doscolor);
 plot(DOS_nrm(1)*ones(size(w_var,2),1),w_var,'color',bottomcolor);
 sequence_points{end}=strcat(sequence_points{end},' (0)');
 set(gca,'xTick', [Ks(kidx),Ks(end)*2],'XTickLabel',[sequence_points, num2str(maxDOS)],...
     'XGrid','on','GridLineStyle','-','layer','bottom');
-xlim([Ks(1),2*Ks(end)]);
+xlim([Ks(1),(1+DOSratio)*Ks(end)]);
 ylim([w_min,w_max_lim]);
 ylabel('Frequency (a/(2\pic))');
 title('Band structure and DOS (2\pic/a)');
