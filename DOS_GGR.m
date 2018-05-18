@@ -244,7 +244,7 @@ set(gca,'xTick', [Ks(kidx),Ks(end)*(1+DOSratio)],'XTickLabel',[sequence_points, 
 xlim([Ks(1),(1+DOSratio)*Ks(end)]);
 ylim([w_min,w_max_lim]);
 ylabel('Frequency \omegaa/(2\pic)');
-title('Band structure and Density of states D2\pic/a per cell');
+title('Band structure and Density of states D2\pic/a');
 set(gca,'FontSize',fs,'FontName','Helvetica','Layer','top');
 annotation(gcf,'textbox',...
     [0.71482722007722 0.0602135060573348 0.120428571428572 0.0476190476190477],...
