@@ -1,4 +1,4 @@
-function DOS_Tr
+%function DOS_Tr
 %% DOS calculation using tetrahedron method
 % The program is for DOS calculation using tetrahedron method. It is a part of 
 % results of our article "Generalized Gilat-Raubenheimer Method for Density-of-States 
@@ -59,6 +59,7 @@ maxDOS_custom=100;        % the parameters about plot, '-1' denotes default sett
 w_max_dsp_coefficient=0.9;  % the displaying maximum frequency is the product of w_max_dsp_coefficient and w_max
 N_w=20000;       % denotes the resolution of frequency : dw = (w_max - w_min) / N_w
 sequence_points={'H','\Gamma','N','P','\Gamma'};    % sequence of high symmetry points in 3D example
+DOSratio=0.5;
 %% Initialization and import data
 
 % k_step(i) is the interval length along i-th dimension
@@ -290,19 +291,26 @@ end
 
 DOSarray(DOSarray>maxDOS)=maxDOS;
 w_var=w_min+step_w*((1:(N_w+1))-1);   % frequency -- the variable of DOS
-DOS_nrm=(Ks(end)-Ks(1))*DOSarray/maxDOS+Ks(end);
+DOS_nrm=DOSratio*(Ks(end)-Ks(1))*DOSarray/maxDOS+Ks(end);
 plot(DOS_nrm,w_var,'Color',bandcolor,'LineWidth',doslinewidth);
 fill(DOS_nrm,w_var,doscolor);
 plot(DOS_nrm(1)*ones(size(w_var,2),1),w_var,'color',bottomcolor);
-sequence_points{end}=strcat(sequence_points{end},' (0)');
-set(gca,'xTick', [Ks(kidx),Ks(end)*2],'XTickLabel',[sequence_points, num2str(maxDOS)],...
+sequence_points{end}=strcat(sequence_points{end},' | 0');
+set(gca,'xTick', [Ks(kidx),Ks(end)*(1+DOSratio)],'XTickLabel',[sequence_points, num2str(maxDOS)],...
     'XGrid','on','GridLineStyle','-','layer','bottom');
-xlim([Ks(1),2*Ks(end)]);
+xlim([Ks(1),(1+DOSratio)*Ks(end)]);
 ylim([w_min,w_max_lim]);
-ylabel('Frequency (a/(2\pic))');
-title('Band structure and DOS (2\pic/a)');
+ylabel('Frequency   \omegaa/(2\pic)');
+title('Band structure & Density of states   D2\pic/a');
 set(gca,'FontSize',fs,'FontName','Helvetica','Layer','top');
+annotation(gcf,'textbox',...
+    [0.71482722007722 0.0602135060573348 0.120428571428572 0.0476190476190477],...
+    'String',{'per cell'},...
+    'LineStyle','none',...
+    'HorizontalAlignment','center',...
+    'FitBoxToText','off');
 hold off
+
 
 saveas(gcf,'BandFigure.fig');
 print('-depsc','-painters','BandFigure');
