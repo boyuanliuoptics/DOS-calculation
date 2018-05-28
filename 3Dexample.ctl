@@ -24,12 +24,12 @@
 (define-param isoval -1.1);isovalue to choose packing fraction
 (define pi (* 4 (atan 1)))
 (define FB
-(lambda (x y z)
-(+  
-	(* (sin (* 2 pi x)) (sin (* 2 y)))
-	(* (sin (* 2 pi y)) (sin (* 2 z)))
-	(* (sin (* 2 pi z)) (sin (* 2 x)))
-)))
+(lambda (h k l x y z)
+(* (cos (* 2 pi (+ h k l) 0.25)) (+ 
+	(* (sin (* 2 pi (+ (* h x) (/ l 4)))) (sin (* 2 pi (+ (* k y) (/ h 4)))) (sin (* 2 pi (+ (* l z) (/ k 4)))))
+	(* (sin (* 2 pi (+ (* h y) (/ l 4)))) (sin (* 2 pi (+ (* k z) (/ h 4)))) (sin (* 2 pi (+ (* l x) (/ k 4)))))
+	(* (sin (* 2 pi (+ (* h z) (/ l 4)))) (sin (* 2 pi (+ (* k x) (/ h 4)))) (sin (* 2 pi (+ (* l y) (/ k 4)))))
+))))
 
 (define (eps-func p-lattice)
 (let* ((p (lattice->cartesian p-lattice))
@@ -37,9 +37,9 @@
 (y (vector3-y p))
 (z (vector3-z p)))
 (if 
-(< (FB x y z) isoval)
+(< (FB 1 1 0 x y z) isoval)
 	(make dielectric-anisotropic (epsilon-diag eps eps eps) (epsilon-offdiag 0 0 0))
-	(if (< (FB (- x) (- y) (- z)) isoval)
+	(if (< (FB 1 1 0 (- x) (- y) (- z)) isoval)
 		(make dielectric-anisotropic (epsilon-diag eps eps eps) (epsilon-offdiag 0 0 0))
 		(make dielectric (epsilon epsbg)))
 )
