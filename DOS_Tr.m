@@ -70,6 +70,8 @@ k_step=b_len./(num_kpoints-1);
 dataall=importdata(file_bandmap);
 datak=dataall(:,1:3);   % beginning three columns are k-points coordinates
 k_min=min(datak(:,1:3));
+k_min=ones(size(datak,1),1)*min(datak(:,1:3));
+k_step=ones(size(datak,1),1)*k_step;
 dataw=dataall(:,4:end); % the other columns are the bands number
 datakn=round((datak-k_min)./k_step)+1;  % integer index of k points, starting from 1
 
@@ -82,7 +84,7 @@ end
 
 % n_kpoints is the total number of k points
 % N_kpoints is the product of number of bands and total number of k points in Brillouin zone
-n_kpoints=prod(num_kpoints);
+n_kpoints=prod(num_kpoints-1);
 v_tetra=1/6/prod(num_kpoints-1);
 
 if w_max_custom==-1
