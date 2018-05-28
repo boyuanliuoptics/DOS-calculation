@@ -38,7 +38,9 @@ fi
 
 # compute frequency band in the whole Brillouin zone for DOS calculation
 # notice: mpb-split will accelerate the computation by multithread
+# mpb-split 8 Zone?=true $file_band_ctl > $data_bandmap
 mpb Zone?=true $file_band_ctl > $data_bandmap
+
 
 #---------------------------------
 #  data extraction and process #2
