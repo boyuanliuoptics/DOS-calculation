@@ -51,7 +51,7 @@ N_w_custom=20000;       % denotes the resolution of frequency : dw = (w_max - w_
 kinter = 30;       % the inter quantity of k points between two high symmetry points
 maxDOS_custom=100;        % the parameters about plot, '-1' denotes default settings
 sequence_points={'H','\Gamma','N','P','\Gamma'};    % sequence of high symmetry points in 3D example
-DOSratio=1;        % the plot ratio of DOS in x axis 
+DOSratio=0.5;        % the plot ratio of DOS in x axis 
 %% Initialization and import data
 % the reciprocal vectors initialization
 vectorb1=reciprocalvector1;
