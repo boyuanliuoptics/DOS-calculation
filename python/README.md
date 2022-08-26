@@ -7,13 +7,12 @@ Please see the article ['Generalized Gilat-Raubenheimer method for density-of-st
 
 This code requires the following libraries.
 
-1. ase for generating k-points.
-2. MPB (with Python bindings) for computing photonic bands.
-3. Matplotlib for plotting data.
-4. NumPy for numerical computations.
-5. tqdm for showing progress bars.
+1. MPB (with Python bindings) for computing photonic bands.
+2. Matplotlib for plotting data.
+3. NumPy for numerical computations.
+4. tqdm for showing progress bars.
 
 I recommend to install all of the libraries from conda-forge:
 ```bash
-conda install -c conda-forge ase mpb numpy tqdm
+conda install -c conda-forge mpb numpy tqdm
 ```
